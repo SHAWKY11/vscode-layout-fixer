@@ -1,0 +1,125 @@
+{
+  "name": "keyflip",
+  "displayName": "KeyFlip",
+  "description": "Instantly convert text between Arabic and English keyboard layouts without translation.",
+  "version": "1.0.0",
+  "publisher": "your-publisher-id",
+  "license": "MIT",
+  "icon": "images/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/keyflip"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other",
+    "Formatters",
+    "Keymaps"
+  ],
+  "keywords": [
+    "arabic",
+    "english",
+    "keyboard",
+    "layout",
+    "converter",
+    "flip",
+    "transliteration"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "keyflip.convert",
+        "title": "Convert Keyboard Layout (Editor)",
+        "category": "KeyFlip",
+        "icon": "$(symbol-keyword)"
+      },
+      {
+        "command": "keyflip.convertTerminal",
+        "title": "Convert Keyboard Layout (Terminal)",
+        "category": "KeyFlip",
+        "icon": "$(terminal)"
+      },
+      {
+        "command": "keyflip.convertClipboard",
+        "title": "Convert Keyboard Layout (WebView / Clipboard)",
+        "category": "KeyFlip",
+        "icon": "$(clippy)"
+      },
+      {
+        "command": "keyflip.toggle",
+        "title": "Toggle On/Off",
+        "category": "KeyFlip",
+        "icon": "$(symbol-keyword)"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "keyflip.convert",
+        "key": "ctrl+alt+l",
+        "mac": "cmd+alt+l",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "keyflip.convertTerminal",
+        "key": "ctrl+alt+l",
+        "mac": "cmd+alt+l",
+        "when": "terminalFocus"
+      },
+      {
+        "command": "keyflip.convertClipboard",
+        "key": "ctrl+alt+l",
+        "mac": "cmd+alt+l",
+        "when": "!editorTextFocus && !terminalFocus"
+      }
+    ],
+    "configuration": {
+      "title": "KeyFlip",
+      "properties": {
+        "keyflip.autoFixOnSave": {
+          "type": "boolean",
+          "default": false,
+          "description": "Automatically detect and convert wrong-layout Arabic words when saving a document.",
+          "scope": "resource"
+        },
+        "keyflip.enableStatusBar": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show the KeyFlip status bar indicator.",
+          "scope": "application"
+        },
+        "keyflip.keybinding": {
+          "type": "string",
+          "default": "ctrl+alt+l",
+          "description": "Keyboard shortcut for the convert command. Change via VS Code Keybindings editor (Ctrl+K Ctrl+S).",
+          "scope": "application"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js",
+    "package": "vsce package",
+    "publish": "vsce publish"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.6",
+    "@types/node": "^20.x",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "@vscode/test-electron": "^2.3.8",
+    "@vscode/vsce": "^2.22.0",
+    "eslint": "^8.56.0",
+    "mocha": "^10.2.0",
+    "typescript": "^5.3.3"
+  }
+}
