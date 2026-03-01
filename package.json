@@ -3,15 +3,19 @@
   "displayName": "KeyFlip",
   "description": "Instantly convert text between Arabic and English keyboard layouts without translation.",
   "version": "1.0.0",
-  "publisher": "your-publisher-id",
+  "publisher": "shawkydev",
   "license": "MIT",
   "icon": "images/icon.png",
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-username/keyflip"
+    "url": "https://github.com/shawkydev/keyflip"
   },
+  "bugs": {
+    "url": "https://github.com/shawkydev/keyflip/issues"
+  },
+  "homepage": "https://github.com/shawkydev/keyflip#readme",
   "engines": {
-    "vscode": "^1.85.0"
+    "vscode": "^1.96.0"
   },
   "categories": [
     "Other",
@@ -25,12 +29,21 @@
     "layout",
     "converter",
     "flip",
-    "transliteration"
+    "keyflip",
+    "transliteration",
+    "arabic-english",
+    "keyboard-layout"
   ],
   "activationEvents": [],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
+      {
+        "command": "keyflip.convertText",
+        "title": "Convert Keyboard Layout",
+        "category": "KeyFlip",
+        "icon": "$(symbol-keyword)"
+      },
       {
         "command": "keyflip.convert",
         "title": "Convert Keyboard Layout (Editor)",
@@ -57,6 +70,11 @@
       }
     ],
     "keybindings": [
+      {
+        "command": "keyflip.convertText",
+        "key": "ctrl+alt+l",
+        "mac": "cmd+alt+l"
+      },
       {
         "command": "keyflip.convert",
         "key": "ctrl+alt+l",
@@ -113,7 +131,7 @@
   "devDependencies": {
     "@types/mocha": "^10.0.6",
     "@types/node": "^20.x",
-    "@types/vscode": "^1.85.0",
+    "@types/vscode": "^1.96.0",
     "@typescript-eslint/eslint-plugin": "^7.0.0",
     "@typescript-eslint/parser": "^7.0.0",
     "@vscode/test-electron": "^2.3.8",
