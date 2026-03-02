@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "FlipLang",
+  "version": "1.0.0",
+  "description": "Instantly convert selected text between Arabic and English keyboard layouts without translation.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "all_frames": true,
+      "run_at": "document_idle"
+    }
+  ],
+  "permissions": ["scripting", "activeTab"],
+  "host_permissions": ["<all_urls>"],
+  "commands": {
+    "flip-layout": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+L",
+        "mac": "Command+Shift+L"
+      },
+      "description": "Convert selected text between Arabic and English keyboard layouts"
+    }
+  }
+}
